@@ -1,0 +1,92 @@
+apply plugin: 'com.android.library'
+apply plugin: 'net.researchgate.release'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'digital.wup:android-maven-publish:3.0.0'
+	classpath 'net.researchgate:gradle-release:2.6.0'
+    }
+}
+
+android {
+    compileSdkVersion 26
+
+    repositories {
+        jcenter()
+
+        maven {
+            url 'https://oss.jfrog.org/list/oss-snapshot-local/'
+        }
+    }
+
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        lintOptions {
+            abortOnError true
+            warningsAsErrors false
+            disable "UnusedResources"
+            textOutput "stdout"
+            textReport true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            consumerProguardFiles 'proguard-rules.pro'
+        }
+    }
+
+}
+
+apply plugin: 'digital.wup.android-maven-publish'
+
+publishing {
+	publications {
+		mavenAar( MavenPublication ) {
+			groupId 'com.empyr'
+			artifactId 'android'
+			from components.android
+		}
+	}
+
+	repositories {
+		maven {
+			if( project.version.endsWith( '-SNAPSHOT' ) ) {
+				url "https://oss.jfrog.org/artifactory/oss-snapshot-local"
+			}else
+			{
+				url "https://api.bintray.com/maven/empyrnetwork/empyrnetwork/empyr_android/;publish=1"
+			}
+			credentials {
+				username "$System.env.BINTREE_USER"
+				password "$System.env.BINTREE_PASSWORD"
+			}
+		}
+	}
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'com.empyr:client:0.9.5-SNAPSHOT'
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+}
+
+
