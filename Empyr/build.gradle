@@ -35,7 +35,7 @@ android {
         lintOptions {
             abortOnError true
             warningsAsErrors false
-            disable "UnusedResources"
+            disable "UnusedResources","DuplicatePlatformClasses"
             textOutput "stdout"
             textReport true
         }
