@@ -82,7 +82,7 @@ publishing {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'com.empyr:client:0.9.5-SNAPSHOT'
+    implementation 'com.empyr:client:0.9.6'
     implementation 'com.android.support:appcompat-v7:26.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
