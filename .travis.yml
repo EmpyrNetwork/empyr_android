@@ -1,0 +1,10 @@
+sudo: false
+language: android
+
+script: ./gradlew connectedAndroidTest
+
+deploy:
+  provider: script
+  script: ./gradlew Empyr:publish
+  skip_cleanup: true
+
