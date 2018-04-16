@@ -1,6 +1,8 @@
 # Empyr Android Library
 
 [![CI Status](http://img.shields.io/travis/EmpyrNetwork/empyr_android.svg?style=flat)](https://travis-ci.org/EmpyrNetwork/empyr_android)
+[![Download](https://api.bintray.com/packages/empyrnetwork/empyrnetwork/empyr_android/images/download.svg)](https://bintray.com/empyrnetwork/empyrnetwork/empyr_android/_latestVersion)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
 Welcome to Empyr's Android Library. This library is intended to help ease the integration effort for partners that participate in the Empyr Offer Platform.
