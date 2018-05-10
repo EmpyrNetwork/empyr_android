@@ -25,7 +25,7 @@ Add the dependency to your build.gradle file.
 
 ```groovy
 dependencies {
-	implementation 'com.empyr:client:VERSION@aar' {
+	implementation('com.empyr:android:VERSION@aar') {
 		transitive = true
 	}
 }
