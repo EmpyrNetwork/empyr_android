@@ -11,7 +11,7 @@ Welcome to Empyr's Android Library. This library is intended to help ease the in
 The Empyr Android library is dependent upon the empyr_java library which has a dependency on the legacy commons httpclient. 
 
 ## Features
-The Empyr iOS library is currently designed to support two primary feature sets:
+The Empyr Android library is currently designed to support two primary feature sets:
 
 - **API Integration** -- The Android SDK integrates the empyr_java library which provides wrappers around the Empyr API as well as model objects and serilization and deserialization components.
 - **Tracker** -- The Tracker component is an easy way for publishers to send impression data to Empyr about their users viewing various offers. Additionally, this component provides Empyr with the data necessary to coordinate segmentation of those users which allows us to distribute more content to those users.
