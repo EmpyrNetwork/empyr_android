@@ -28,7 +28,7 @@ android {
 
 dependencies {
     implementation project(":Empyr")
-    implementation 'com.empyr:client:0.9.5-SNAPSHOT'
+    implementation 'com.empyr:client:0.9.11'
     implementation 'com.google.android.gms:play-services-ads:12.0.0'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
