@@ -1,6 +1,10 @@
 sudo: true
 language: android
 
+branches:
+  only:
+  - master
+
 cache:
   directories:
     - ${TRAVIS_BUILD_DIR}/gradle/caches/
