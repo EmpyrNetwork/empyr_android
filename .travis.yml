@@ -32,7 +32,6 @@ android:
   - sys-img-$ANDROID_ABI-$ANDROID_EMULATOR_TARGET
 script:
   - "./gradlew Empyr:assembleRelease"
-  - "./gradlew -Psigning.keyId=${SIGNING_KEY_ID} -Psigning.password=${SIGNING_KEY_PASSWORD} -Psigning.secretKeyRingFile=../gpg.key Empyr:publishReleasePublicationToSonatypeRepository"
 deploy:
   provider: script
   script: "./gradlew -Psigning.keyId=${SIGNING_KEY_ID} -Psigning.password=${SIGNING_KEY_PASSWORD} -Psigning.secretKeyRingFile=../gpg.key Empyr:publishReleasePublicationToSonatypeRepository closeAndReleaseSonatypeStagingRepository"
