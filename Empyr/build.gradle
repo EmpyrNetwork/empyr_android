@@ -1,32 +1,13 @@
 apply plugin: 'com.android.library'
-apply plugin: 'net.researchgate.release'
-
-buildscript {
-    repositories {
-        jcenter()
-    }
-
-    dependencies {
-        classpath 'digital.wup:android-maven-publish:3.6.3'
-		classpath 'net.researchgate:gradle-release:2.6.0'
-    }
-}
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
 
 android {
-    compileSdkVersion 26
-
-    repositories {
-        jcenter()
-
-        maven {
-            url 'https://oss.jfrog.org/list/oss-snapshot-local/'
-        }
-    }
-
+    compileSdkVersion 29
 
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 26
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 
@@ -63,55 +44,71 @@ task androidJavadocs(type: Javadoc) {
 }
 
 task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
-    classifier = 'javadoc'
+    archiveClassifier.set("javadoc")
     from androidJavadocs.destinationDir
 }
 
 task androidSourcesJar(type: Jar) {
-    classifier = 'sources'
+    archiveClassifier.set("sources")
     from android.sourceSets.main.java.srcDirs
 }
 
-apply plugin: 'digital.wup.android-maven-publish'
-
-publishing {
-	publications {
-		mavenAar( MavenPublication ) {
-			groupId 'com.empyr'
-			artifactId 'android'
-
-			artifact androidJavadocsJar
-			artifact androidSourcesJar
-
-			from components.android
-		}
-	}
-
-	repositories {
-		maven {
-			if( project.version.endsWith( '-SNAPSHOT' ) ) {
-				url "https://oss.jfrog.org/artifactory/oss-snapshot-local"
-			}else
-			{
-				url "https://api.bintray.com/maven/empyrnetwork/empyrnetwork/empyr_android/;publish=1"
-			}
-			credentials {
-				username "$System.env.BINTREE_USER"
-				password "$System.env.BINTREE_PASSWORD"
-			}
-		}
-	}
+signing {
+    sign publishing.publications
 }
 
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId 'com.empyr'
+                artifactId 'android'
+
+                artifact androidJavadocsJar
+                artifact androidSourcesJar
+
+                pom {
+                    name = 'Empyr Android Library'
+                    description = 'This library is intended to help ease the integration effort for partners that participate in the Empyr Offer Platform.'
+                    url = 'https://github.com/EmpyrNetwork/empyr_android'
+                    licenses {
+                        license {
+                            name = 'MIT License'
+                            url = 'http://www.opensource.org/licenses/mit-license.php'
+                        }
+                    }
+
+                    organization {
+                        name = 'Empyr'
+                        url = 'https://www.empyr.com'
+                    }
+
+                    developers {
+                        developer {
+                            name = 'Empyr Development'
+                            email = 'developer@empyr.com'
+                        }
+                    }
+
+                    scm {
+                        connection = "sscm:git:https://github.com/EmpyrNetwork/empyr_android.git"
+                        developerConnection = "scm:git:git@github.com:EmpyrNetwork/empyr_android.git"
+                        url = "https://github.com/EmpyrNetwork/empyr_android"
+                    }
+                }
+            }
+        }
+    }
+}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation 'com.empyr:client:0.9.17'
-    implementation 'com.android.support:appcompat-v7:26.1.0'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
 
 

@@ -1,42 +1,41 @@
 sudo: true
 language: android
-
 cache:
   directories:
-    - ${TRAVIS_BUILD_DIR}/gradle/caches/
-    - ${TRAVIS_BUILD_DIR}/gradle/wrapper/dists/
-
+  - "${TRAVIS_BUILD_DIR}/gradle/caches/"
+  - "${TRAVIS_BUILD_DIR}/gradle/wrapper/dists/"
 env:
   global:
-    - GRADLE_OPTS='-Dorg.gradle.daemon=false -Dorg.gradle.parallel=false -Dkotlin.incremental=false -DdisablePreDex'
-    - ANDROID_TARGET=android-26
-    - ANDROID_BUILD_TOOLS_VERSION=28.0.3
-    - ANDROID_ABI=armeabi-v7a
-    - ANDROID_EMULATOR_TARGET=android-22
-
+  - GRADLE_OPTS='-Dorg.gradle.daemon=false -Dorg.gradle.parallel=false -Dkotlin.incremental=false
+    -DdisablePreDex'
+  - ANDROID_TARGET=android-29
+  - ANDROID_BUILD_TOOLS_VERSION=29.0.2
+  - ANDROID_ABI=armeabi-v7a
+  - ANDROID_EMULATOR_TARGET=android-29
+  - secure: nyvt+oVDS0JswxN3mL6p4K5hUM33NpR7SWG6jJC8M4foqyyMghn+oUD9R2wIwWKClNmUsJqdStZgTWDaXlxTQzIfpgpURSkqxuLkrHgeMjMHkuLirZB3Zs40ptPn4ViJDHQlNJXuTl/nA9EWMbSxRo3eTIDthMMiHZ99svXZ34vQwAXxasA+yH92C07cnzPvPeowCZV5U0pxGUvP2h5VY0Nd9QhiB///GqZVrxBrGY3jsNssmUyTYOO1YKaP79y0o5IKLs4GqwkFMcItb+K+4lK0+5hL3AYVnGCYSECF4UEn6+7iokeQey/OSitHpt9FPaAYxklMkdWMxI3M3e3Z8WxU23UrEv5SSc1JbXpaUX9tXbLtpA3fVGusnTflkBlZHCxaYuALG+MH7nswTu6NNURVC3HU9dvzxKZjuSISKvqk+H3gVK1dwM+eZNk0SGOQ8tdkU4eRHqW5I5MxD0j93vl/Qi5umbFBESh+cYJakQb+nGPb6wXS31kiZ/l/qPvoTEqfC9thWuy2eXwTFZViEzuXrH+CSBsus+5i4FraYyzd34HAAsWVvOFOif2fiP0ZTY12V3QspATH7Qjvm1FKcRa0ouv1g6GAGQiJN2bVbH8HOGEQ1h967CJSIl8x74dMdZ60Hgem+85BvCGK3Gvf5UAu/8H2F5OPAJw5kawAhQs=
+  - secure: d5GG5KVSGnSthIiZMGKc0NgXGKrW/uKZ0owxr3iOrqMCZp2sbJWEuOyu4bS7myIFGxg+uZLKqW5c9KHOg3lPvdTAP0TancE4nu6m/Db9insJhOJ3BlUth2YDURMJdkXvr12HL9MZQsMTLh9RWnzc4+kUbxnHpstLET1bGlVmJdJOx6n6JWERxeoPbo+6VqiHFqxe/8Vm08t3pOIePC8c2qDm/zUMFqlTBrNag/OnzIhmvfK0og0TyyNsJ4wlpUIOOEuYo2A90K8f1vg5BoZgILv8IPmddc0+qyZLH9cQOETN8TipjPEIlcJHnJfpeXuekOatqon+RM24iAGac7QrORptfZRvWDaOvLDEzO9Q3skDmU76KHkg9Wa8ifo2v9SOsw14BiI055KvNn4e0DZilTxcvH05DNMGoblMiR6PWjv4Iwb/tID063O3qouIquADNus325O1yrv8ikBe0csONx+uZc1ulpzkd8eFRVhyAQlROusM5+S7xJ23zkQma+5SGEYRfNSpu1izToNEwBnn1OFE+c6wYiee1xrK1tAogsmU4NfAQhNWuear9WQBLOAxuIRNVVy0/8qZ/esv2XZaBampEszzVrDaEZUEBaaDpHtHSeQxFl0DYYSYyA3ftu78LFJZR8nySbIHL7BoDNh+pIixQGMrNm1Somd9rRy+Ybk=
+  - secure: dAbPgDPdr+8MmVNovVLtEusu/bxo4jm5qwYh9Iq/w5JGJ1ml6BVgLHAGvWU6pXbv8IzSZ5GMEnX7DQZUuw7qCMHJ7JCoUtItpomEiy530tUc/Tbu6HBSzFq4CqsMmGbLdMW1ZvWxg9DC2zUM2tKw+H1dBTPQOMLtwweYVrkLtkAZB14g9M1ditqKM5hMgN8rTRkI+fzy9++lyB7tPVJb17330Znwsrz0G3Y9Py6CGYUw1uE2b/AKViNtreKco+ePkmkKk5P0/+pbNW3gug2/tvBXfq0Jop8xE3ajDArHd5v99ZVAuWPgXIlJuR/5KU8GnkR2qv06Qk+hD3739q6EKHBugZRTThpnHvWxsDb3Tz+5+K/Ad10UCrkK5H/UFIN6bxGV7U0HeQiMujEB/u6DI85bIOOxT4xSSFkJirOPhhxFLhSIUOxyt8iW40rfpM+TT6rGeblHRGsiklf5Bw93YUw/t+JjlgA7o1/Av6YDhOkiJ5na7dv/MTHJmP4zsWj+aIkvYQp8I9eCdl+RzwMkLmbJqtVDDQfQVw7nqZJ6Jf8OQQI4gG5XOD7DIANhrvWZQuyknAwexgGzPR/MBGcy2SPAZKgGHeUWvCvgsK1nB8oxDLBoQ822NdNUUj0zjVIsV+FNJqkxKX1So6efYp2ehm7eWYqyD6Rm5jApXk4zKDY=
+  - secure: dn0qbpcy5Qr6uqVGZGWhrfRVMBtf4uTgt3Q1Th0HuVKgv7KN6dB+j5zeOj61BMPEI7B/2iVJ7Xu3zpIMdVuw6kDrTkvy4+vKF8PN1ii5J227tOtMxh3CXFl+lXx9dbFyJw/vnbol1Lr8670PqEU7/stkXfwXrSLoEKmhHkUExYP+ScHBNCttuMGOQt4NhUlBkGdXdxefeP554P8IqhZAp9AZCmCn5qmQ6hkpHn0VtBGHFcn8f7C4ZkcA7+cFtBzZm/T8l3fac1eMnX6LsVOghZB6KPbAMF1EbclM2XLPGk7r8gq+pZrH+56AbXwXBp0ZVVmtMAjGf1bEx93y9+Km0/F5KY/JI1C88BgYnVJO87JBTZGGOJb+6AOpG9Euxnh1RXAB3Xz8U0MPx3ZBYcsz9Hj4zVTDNrDivULjVoZpvH5xoMyThnUtsajqwhf4TZEHi/UxtQ+Y8JW2+58XU2JzoYo5yfc4rMFP5iWHHKISENQw/sSIyzVa9sILKWlng4zwINglf+qoxLcLhFCXknCAQMDraFRYFc51zW7DGYTZm4KJ5LYpltEqiHEphnqh2RDnkjSH4UgMqVeK42Mhc8PBGmRoiyGrr2qybpHX4rBWYJEkJHmzQcQ3NP3s+7qtSB8HecQXf0Rfe9iELi/7DXLt4DaA9N33Nxy7DotmGkKqa8M=
+  - secure: M9kpgBXJSHQF9U33nqiWIJe0rUPdISboqbkohOxhJPNwZZIityQWPIRRXNZmtDwM7hMXK8TJW/LGv/rsMEbPFgONPT8HiKF3Jxbz0p5OmtAPbsImul7xucWWrivLIc6hgaK5s5he7jFq6pcB4wUTg6marJ6FZmrYgSAP6OoFtFk2LCojcdzOHMveNUBbqNnDuq9LI9U3LoPMkj5P0h2oVZwHiiiQEOzdOLGzcB8pFH3LLwmbR3/EiMqq4Wx7UXB0WRO/Ye/Py/tMBWmtKeblFun4jV9WtFyufbBdmqV3vButEKx0pLQZU9bL1TlZOIOU5jqLimuetOLXra6arPZ9BGmpgMA6nHEwc1o/6IBjPcO8uwajCBgk287tP9+W5llNK8WxwhNIco3fRKl7FiiC8W+jhLt0p0QVjWc+Zwk7hOLS3WVOVJPlSNG02UQmyjggkGD4BBgA9UL86gpxzjsue5ehxdHYowWsqJCfmA0vtcOPhDtgNsXmrOO4ruV7PhbvpuK/I+HaWA1NKJ8k0HtJdrGpO49H30x+E/kepkFKnlaXpzeL19JP6GJ6lU08wrOeJ1/NqElLmrfZZkm8W8CE4TGQ58wIzyqzWeruZH9wNaQP5gcxUr+V7xiG+HmztqpL2uM9z7YG4Bi4kVab6xFThUBkbAzwr+0HSj52xImepmc=
+before_install:
+- openssl aes-256-cbc -K $encrypted_011506a0d8d1_key -iv $encrypted_011506a0d8d1_iv
+  -in gpg.key.enc -out gpg.key -d
 android:
   components:
-    - tools
-    - build-tools-$ANDROID_BUILD_TOOLS_VERSION
-    - $ANDROID_TARGET
-    - $ANDROID_EMULATOR_TARGET
-    - extra-google-google_play_services
-    - extra-android-support
-    - extra
-    - sys-img-$ANDROID_ABI-$ANDROID_EMULATOR_TARGET
-
+  - tools
+  - build-tools-$ANDROID_BUILD_TOOLS_VERSION
+  - "$ANDROID_TARGET"
+  - "$ANDROID_EMULATOR_TARGET"
+  - extra-google-google_play_services
+  - extra-android-support
+  - extra
+  - sys-img-$ANDROID_ABI-$ANDROID_EMULATOR_TARGET
 script:
-  - echo no | android create avd --force -n test -t $ANDROID_EMULATOR_TARGET --abi $ANDROID_ABI
-  - emulator -avd test -no-window &
-  - ./gradlew Empyr:check
-  - android-wait-for-emulator
-  - adb shell input keyevent 82 &
-  - ./gradlew connectedAndroidTest
-
+  - "./gradlew Empyr:assembleRelease"
+  - "./gradlew -Psigning.keyId=${SIGNING_KEY_ID} -Psigning.password=${SIGNING_KEY_PASSWORD} -Psigning.secretKeyRingFile=../gpg.key Empyr:publishReleasePublicationToSonatypeRepository"
 deploy:
   provider: script
-  script: ./gradlew Empyr:publish
+  script: "./gradlew -Psigning.keyId=${SIGNING_KEY_ID} -Psigning.password=${SIGNING_KEY_PASSWORD} -Psigning.secretKeyRingFile=../gpg.key Empyr:publishReleasePublicationToSonatypeRepository closeAndReleaseSonatypeStagingRepository"
   skip_cleanup: true
   on:
     tags: true
-
