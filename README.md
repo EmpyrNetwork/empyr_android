@@ -1,6 +1,7 @@
 # Empyr Android Library
 
 [![Build Status](https://travis-ci.com/EmpyrNetwork/empyr_android.svg?branch=master)](https://travis-ci.com/EmpyrNetwork/empyr_android)
+[![Maven Central](https://img.shields.io/maven-central/v/com.empyr/android)](https://search.maven.org/artifact/com.empyr/android)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
